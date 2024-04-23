@@ -1,0 +1,137 @@
+@import url('https://fonts.cdnfonts.com/css/pokemon-solid');
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+
+:root{
+    --font-pokemon: 'Pokemon Solid', sans-serif;
+    --color-pokemon-yellow:#ffcc08;
+    --color-pokemon-blue:#3a5ca8;
+    --color-btn-1:#afd977;
+    --color-btn-2:#f7de8c;
+    --color-btn-3:#de5d61;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url(./tools-desing/WhatsApp\ Image\ 2024-04-04\ at\ 22.40.52.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-pokemon);
+    flex-direction: column;
+}
+
+.imgPokemon{
+    filter: brightness(0);
+    width: 500px;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    /* align-items: center;
+    margin: 0 auto;
+    max-height: 1200vh;
+    width: 80%;
+    overflow: hidden; */
+}
+
+.container-container{
+    display: flex;
+    gap: 12em;
+}
+
+.text-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pokeomon{
+    color: var(--color-pokemon-yellow);
+    -webkit-text-stroke-width: 6px;
+    -webkit-text-stroke-color: var(--color-pokemon-blue); 
+    font-size: 140px;
+}
+
+.botones{
+    display: flex;
+    gap: 1em;
+}
+
+
+.botones button:nth-child(1){
+    background-color: var(--color-btn-1);
+}
+
+.botones button:nth-child(2){
+    background-color: var(--color-btn-2);
+}
+
+.botones button:nth-child(3){
+    background-color: var(--color-btn-3);
+}
+
+button{
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    padding: .5em;
+    border-radius: 9px;
+    font-size: 20px;
+}
+
+@media (max-width: 600px){
+    body{
+        background-image: url(./tools-desing/mobile-desing.png);
+        flex-direction: column;
+        gap: 1em;
+        padding: 2em;
+    }
+    .container-container{
+        gap: 0;
+        flex-direction: column;
+    }
+    .pokeomon{
+        font-size: 70px;
+        -webkit-text-stroke-width: 4px;
+    }
+    .imgPokemon{
+        width: 200px;
+    }
+    button{
+        font-size: 12px;
+    }
+    .botones{
+        padding-top: 2em;
+    }
+    .container{
+        padding: 1em;
+    }
+    
+}
+
+@media (min-width:601px) and (max-width:1025px){
+    .imgPokemon{
+        width: 500px;
+    }
+    .container-container{
+        gap: 0;
+        flex-direction: column;
+    }
+    button{
+        font-size: 40px;
+        border: none;
+        border-radius: 9px;
+        
+    }
+}
