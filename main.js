@@ -2,6 +2,7 @@ const containerNamePokemon = document.querySelector(".text-container");
 const signoInterrogacion = document.querySelector(".name-pokemon");
 const containerDivImagePokemon = document.querySelector(".container");
 const containerBotones = document.querySelector(".botones");
+const scoreContainer = document.querySelector(".score");
 
 function getPokemonImage(pokemonAleatorio, done) {
     const url = `https://pokeapi.co/api/v2/pokemon/${pokemonAleatorio}`;
@@ -86,8 +87,8 @@ getPokemonImage(pokemonAleatorio, (imgUrl, correctName) => {
                             origin: { y: 0.6 }
                           });
                         btn.style.display = "none";
-                        
-
+                        let score = 0 ;
+                        scoreContainer.textContent =  score + 10;
                     });
 
                 } else {

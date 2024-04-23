@@ -28,6 +28,7 @@ body{
     align-items: center;
     font-family: var(--font-pokemon);
     flex-direction: column;
+    gap: 4em;
 }
 
 .imgPokemon{
@@ -90,11 +91,16 @@ button{
     font-size: 20px;
 }
 
-@media (max-width: 600px){
+.container-header{
+    display: flex;
+    gap: 70em;
+}
+
+@media (min-width:301px) and (max-width: 600px){
     body{
         background-image: url(./tools-desing/mobile-desing.png);
         flex-direction: column;
-        gap: 1em;
+        gap: 3em;
         padding: 2em;
     }
     .container-container{
@@ -102,7 +108,7 @@ button{
         flex-direction: column;
     }
     .pokeomon{
-        font-size: 70px;
+        font-size: 50px;
         -webkit-text-stroke-width: 4px;
     }
     .imgPokemon{
@@ -116,6 +122,12 @@ button{
     }
     .container{
         padding: 1em;
+    }
+    .container-header {
+        gap: 10em;
+    }
+    .botones{
+        flex-direction: column;
     }
     
 }
@@ -132,6 +144,12 @@ button{
         font-size: 40px;
         border: none;
         border-radius: 9px;
-        
+    }
+    .pokeomon{
+        font-size: 100px;
+    }
+    .container-header{
+        display: flex;
+        gap: 30em;
     }
 }
