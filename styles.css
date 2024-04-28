@@ -6,9 +6,6 @@
     --font-pixel:"Pixelify Sans", sans-serif;
     --color-pokemon-yellow:#ffcc08;
     --color-pokemon-blue:#3a5ca8;
-    --color-btn-1:#afd977;
-    --color-btn-2:#f7de8c;
-    --color-btn-3:#de5d61;
 }
 
 *{
@@ -70,18 +67,18 @@ body{
     gap: 1em;
 }
 
-
+/* 
 .botones button:nth-child(1){
-    background-color: var(--color-btn-1);
+    background-color: var(--color-pokemon-yellow);
 }
 
 .botones button:nth-child(2){
-    background-color: var(--color-btn-2);
+    background-color: var(--color-pokemon-yellow);
 }
 
 .botones button:nth-child(3){
-    background-color: var(--color-btn-3);
-}
+    background-color: var(--color-pokemon-yellow);
+} */
 
 button{
     font-family: var(--font-pixel);
@@ -90,11 +87,14 @@ button{
     padding: .5em;
     border-radius: 9px;
     font-size: 20px;
+    background-color: var(--color-pokemon-yellow);
+    border-color: var(--color-pokemon-blue);
 }
 
 .container-header{
     display: flex;
-    gap: 70em;
+    flex-direction: column;
+    gap: 2em;
 }
 
 .container-score{
@@ -144,6 +144,7 @@ button{
   
   .container-hears{
     display: flex;
+    justify-content: center;
     gap: 2em;
   }
 
@@ -172,7 +173,7 @@ button{
     body{
         background-image: url(./tools-desing/mobile-desing.png);
         flex-direction: column;
-        gap: 3em;
+        gap: 2em;
         padding: 2em;
     }
     .container-container{
@@ -190,20 +191,18 @@ button{
         font-size: 12px;
     }
     .botones{
-        padding-top: 2em;
+        padding-top: 0em;
+        gap: 1em;
     }
     .container{
         padding: 1em;
     }
     .container-header {
-        gap: 8em;
-    }
-    .botones{
-        flex-direction: column;
+        gap: 1em;
     }
     .container-score{
     -webkit-text-stroke-width: .6px;
-    font-size: 20px;
+    font-size: 40px;
     text-align: center;
     }
     .container-hears{
@@ -224,7 +223,7 @@ button{
         flex-direction: column;
     }
     button{
-        font-size: 40px;
+        font-size: 30px;
         border: none;
         border-radius: 9px;
     }
@@ -233,6 +232,6 @@ button{
     }
     .container-header{
         display: flex;
-        gap: 30em;
+        gap: 1em;
     }
 }
