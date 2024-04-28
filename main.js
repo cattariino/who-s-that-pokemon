@@ -3,6 +3,44 @@ const signoInterrogacion = document.querySelector(".name-pokemon");
 const containerDivImagePokemon = document.querySelector(".container");
 const containerBotones = document.querySelector(".botones");
 const scoreContainer = document.querySelector(".score");
+const containerHears = document.querySelector(".container-hears");
+
+function addHearts() {
+    for (let i = 0; i < 3; i++) {
+        const divHeart = document.createElement("div");
+        divHeart.className = "heart";
+        containerHears.appendChild(divHeart);
+    }
+}
+
+addHearts();
+
+let heartsLeft = 3;
+
+function removeHeart() {
+    const hearts = containerHears.querySelectorAll('.heart');
+    if (hearts.length > 0) {
+        const lastHeart = hearts[hearts.length - 1];
+        lastHeart.remove();
+        heartsLeft--;
+
+        if (heartsLeft === 0) {
+            setTimeout(() => {
+                alert("¡Te quedaste sin vidas, inténtalo de nuevo!");
+                restartGame(); // Llamar a la función para reiniciar el juego
+            }, 500);
+        }
+    }
+}
+
+function restartGame() {
+    // Restablecer el número de vidas y volver a agregar los corazones
+    heartsLeft = 3;
+    containerHears.innerHTML = '';
+    addHearts();
+    // Volver a cargar un nuevo Pokémon
+    loadNewPokemon();
+}
 
 function getPokemonImage(pokemonAleatorio, done) {
     const url = `https://pokeapi.co/api/v2/pokemon/${pokemonAleatorio}`;
@@ -55,18 +93,18 @@ function getRandomPokemonNames(correctName, callback) {
 }
 
 function getStoredScore() {
-    const storedScore = localStorage.getItem('score');
-    return storedScore ? parseInt(storedScore) : 0; 
+    const storedScore = sessionStorage.getItem('score');
+    return storedScore ? parseInt(storedScore) : 0;
 }
 
 function saveScore(score) {
-    localStorage.setItem('score', score);
+    sessionStorage.setItem('score', score);
 }
 
 scoreContainer.textContent = getStoredScore();
 
 function loadNewPokemon() {
-    containerDivImagePokemon.innerHTML = ''; 
+    containerDivImagePokemon.innerHTML = '';
     containerBotones.innerHTML = '';
     signoInterrogacion.textContent = "?"
     scoreContainer.textContent = getStoredScore(); // Usar el puntaje almacenado
@@ -94,11 +132,11 @@ function loadNewPokemon() {
                         allButtons.forEach(btn => {
                             btn.style.display = "none";
                         });
-                        let score = getStoredScore(); 
-                        score += 10; 
-                        scoreContainer.textContent = score; 
-                        saveScore(score); 
-                        
+                        let score = getStoredScore();
+                        score += 10;
+                        scoreContainer.textContent = score;
+                        saveScore(score);
+
                         function randomInRange(min, max) {
                             return Math.random() * (max - min) + min;
                         }
@@ -110,19 +148,18 @@ function loadNewPokemon() {
                             origin: { y: 0.6 }
                         });
 
-                        
                         setTimeout(() => {
-                            loadNewPokemon(); 
-                        }, 2000); 
+                            loadNewPokemon();
+                        }, 2000);
                     } else {
                         button.classList.add("animate__animated", "animate__wobble");
                         button.addEventListener('animationend', () => {
                             button.style.display = "none";
                         });
-                        let score = getStoredScore(); 
-                        score -= 10; 
-                        scoreContainer.textContent = score; 
-                        saveScore(score); 
+                        removeHeart(); // Llamar a la función para quitar un corazón
+                        let score = getStoredScore();
+                        scoreContainer.textContent = score;
+                        saveScore(score);
                     }
                 });
             });
