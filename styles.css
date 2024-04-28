@@ -3,6 +3,7 @@
 
 :root{
     --font-pokemon: 'Pokemon Solid', sans-serif;
+    --font-pixel:"Pixelify Sans", sans-serif;
     --color-pokemon-yellow:#ffcc08;
     --color-pokemon-blue:#3a5ca8;
     --color-btn-1:#afd977;
@@ -83,7 +84,7 @@ body{
 }
 
 button{
-    font-family: "Pixelify Sans", sans-serif;
+    font-family: var(--font-pixel);
     font-optical-sizing: auto;
     font-weight: 400;
     padding: .5em;
@@ -95,6 +96,77 @@ button{
     display: flex;
     gap: 70em;
 }
+
+.container-score{
+    color: var(--color-pokemon-yellow);
+    -webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: black; 
+    font-size: 50px;
+    font-family:var(--font-pixel) ;
+}
+
+/* corazon */
+.heart {
+    background: red;
+    width: 20px;
+    height: 20px;
+    box-shadow:
+      20px -20px 0px black, 40px -20px 0px black, 0px -20px 0px black,
+      120px -20px 0px black, 140px -20px 0px black, 160px -20px 0px black,
+      20px 0px 0px red, 40px 0px 0px red, 60px 0px 0px black, -20px 0px 0px black,
+      100px 0px 0px black, 140px 0px 0px red, 160px 0px 0px #b32914, 120px 0px 0px red, 180px 0px 0px black,
+      80px 20px 0px black, 120px 20px 0px red, 140px 20px 0px red, 160px 20px 0px red, 180px 20px 0px #b32914, 100px 20px 0px red, 200px 20px 0px black,
+      -40px 20px 0px black, -20px 20px 0px red, 0px 20px 0px red, 20px 20px 0px white, 40px 20px 0px red, 60px 20px 0px red,
+      -40px 40px 0px black, -20px 40px 0px red, 0px 40px 0px white, 20px 40px 0px red, 40px 40px 0px red, 60px 40px 0px red,
+      80px 40px 0px red, 100px 40px 0px red, 120px 40px 0px red, 140px 40px 0px red, 160px 40px 0px red, 180px 40px 0px #b32914, 200px 40px 0px black,
+      80px 60px 0px red, 100px 60px 0px red, 120px 60px 0px red, 140px 60px 0px red, 160px 60px 0px red, 180px 60px 0px #b32914, 200px 60px 0px black,
+      -40px 60px 0px black, -20px 60px 0px red, 0px 60px 0px red, 20px 60px 0px red, 40px 60px 0px red, 60px 60px 0px red,
+      -40px 80px 0px black, -20px 80px 0px red, 0px 80px 0px red, 20px 80px 0px red, 40px 80px 0px red, 60px 80px 0px red,
+      80px 80px 0px red, 100px 80px 0px red, 120px 80px 0px red, 140px 80px 0px red, 160px 80px 0px red, 180px 80px 0px #b32914, 200px 80px 0px black,
+      80px 100px 0px red, 100px 100px 0px red, 120px 100px 0px red, 140px 100px 0px red, 160px 100px 0px #b32914, 180px 100px 0px black,
+      -20px 100px 0px black, 0px 100px 0px red, 20px 100px 0px red, 40px 100px 0px red, 60px 100px 0px red,
+      0px 120px 0px black, 20px 120px 0px red, 40px 120px 0px red, 60px 120px 0px red,
+      80px 120px 0px red, 100px 120px 0px red, 120px 120px 0px red, 140px 120px 0px #b32914, 160px 120px 0px black,
+      20px 140px 0px black, 40px 140px 0px red, 60px 140px 0px red,
+      80px 140px 0px red, 100px 140px 0px red, 120px 140px 0px #b32914, 140px 140px 0px black,
+      80px 160px 0px red, 100px 160px 0px #b32914, 120px 160px 0px black,
+      40px 160px 0px black, 60px 160px 0px red,
+      80px 180px 0px #b32914, 100px 180px 0px black,
+      60px 180px 0px black,
+      80px 200px 0px black;
+     animation: animate .5s alternate infinite;
+     scale: 15%;
+   }
+   
+   .position-center {
+    margin: auto;
+  }
+  
+  .container-hears{
+    display: flex;
+    gap: 2em;
+  }
+
+  body {
+    overflow: hidden;
+  }
+  
+@keyframes animate {
+    0% {
+        transform: scale(1)
+    }
+    20% {
+        transform: scale(1.05)
+    }
+    50% {
+        transform: scale(1)
+    }
+    100% {
+        transform: scale(1.07)
+    }
+    }
+
+
 
 @media (min-width:301px) and (max-width: 600px){
     body{
@@ -124,10 +196,21 @@ button{
         padding: 1em;
     }
     .container-header {
-        gap: 10em;
+        gap: 8em;
     }
     .botones{
         flex-direction: column;
+    }
+    .container-score{
+    -webkit-text-stroke-width: .6px;
+    font-size: 20px;
+    text-align: center;
+    }
+    .container-hears{
+        gap: 1em;
+    }
+    .heart{
+        scale:10%;
     }
     
 }

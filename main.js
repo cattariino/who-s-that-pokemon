@@ -54,54 +54,80 @@ function getRandomPokemonNames(correctName, callback) {
     });
 }
 
-const pokemonAleatorio = Math.floor(Math.random() * 150) + 1;
+function getStoredScore() {
+    const storedScore = localStorage.getItem('score');
+    return storedScore ? parseInt(storedScore) : 0; 
+}
 
-getPokemonImage(pokemonAleatorio, (imgUrl, correctName) => {
-    const imgPokemon = document.createElement("img");
-    imgPokemon.src = imgUrl;
-    imgPokemon.className = "imgPokemon";
-    containerDivImagePokemon.appendChild(imgPokemon);
+function saveScore(score) {
+    localStorage.setItem('score', score);
+}
 
-    getRandomPokemonNames(correctName, names => {
-        names.forEach((name, index) => {
-            const button = document.createElement("button");
-            button.className = "btn1";
-            button.textContent = name;
-            containerBotones.appendChild(button);
-            // containerNamePokemon.appendChild(button);
-            button.addEventListener("click", () => {
-                if (name === correctName) {
-                    imgPokemon.style.filter = "none";
-                    signoInterrogacion.textContent = correctName;
-                    const allButtons = containerBotones.querySelectorAll("button");
-                    allButtons.forEach(btn => {
+scoreContainer.textContent = getStoredScore();
+
+function loadNewPokemon() {
+    containerDivImagePokemon.innerHTML = ''; 
+    containerBotones.innerHTML = '';
+    signoInterrogacion.textContent = "?"
+    scoreContainer.textContent = getStoredScore(); // Usar el puntaje almacenado
+
+    const pokemonAleatorio = Math.floor(Math.random() * 150) + 1;
+
+    getPokemonImage(pokemonAleatorio, (imgUrl, correctName) => {
+        const imgPokemon = document.createElement("img");
+        imgPokemon.src = imgUrl;
+        imgPokemon.className = "imgPokemon";
+        containerDivImagePokemon.appendChild(imgPokemon);
+
+        getRandomPokemonNames(correctName, names => {
+            names.forEach((name, index) => {
+                const button = document.createElement("button");
+                button.className = "btn1";
+                button.textContent = name;
+                containerBotones.appendChild(button);
+
+                button.addEventListener("click", () => {
+                    if (name === correctName) {
+                        imgPokemon.style.filter = "none";
+                        signoInterrogacion.textContent = correctName;
+                        const allButtons = containerBotones.querySelectorAll("button");
+                        allButtons.forEach(btn => {
+                            btn.style.display = "none";
+                        });
+                        let score = getStoredScore(); 
+                        score += 10; 
+                        scoreContainer.textContent = score; 
+                        saveScore(score); 
                         
                         function randomInRange(min, max) {
                             return Math.random() * (max - min) + min;
-                          }
-                          
-                          confetti({
+                        }
+
+                        confetti({
                             angle: randomInRange(55, 125),
                             spread: randomInRange(50, 70),
                             particleCount: randomInRange(50, 100),
                             origin: { y: 0.6 }
-                          });
-                        btn.style.display = "none";
-                        let score = 0 ;
-                        scoreContainer.textContent =  score + 10;
-                    });
+                        });
 
-                } else {
-                    button.classList.add("animate__animated", "animate__wobble");
-                    button.addEventListener('animationend', () => {
-                        // Cuando la primera animación haya terminado, aplica la segunda animación
-                        button.style.display = "none";
-                    });
-                    // alert("Pokemon Incorrecto. ¡Inténtalo de nuevo!");
-                }
+                        
+                        setTimeout(() => {
+                            loadNewPokemon(); 
+                        }, 2000); 
+                    } else {
+                        button.classList.add("animate__animated", "animate__wobble");
+                        button.addEventListener('animationend', () => {
+                            button.style.display = "none";
+                        });
+                        let score = getStoredScore(); 
+                        score -= 10; 
+                        scoreContainer.textContent = score; 
+                        saveScore(score); 
+                    }
+                });
             });
         });
     });
-});
+}
 
-
+loadNewPokemon();
