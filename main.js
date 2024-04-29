@@ -5,6 +5,10 @@ const containerBotones = document.querySelector(".botones");
 const scoreContainer = document.querySelector(".score");
 const containerHears = document.querySelector(".container-hears");
 
+window.addEventListener('beforeunload', function(event) {
+    sessionStorage.removeItem('score');
+});
+
 function addHearts() {
     for (let i = 0; i < 3; i++) {
         const divHeart = document.createElement("div");

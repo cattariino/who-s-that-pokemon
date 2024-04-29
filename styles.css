@@ -151,7 +151,8 @@ button{
   body {
     overflow: hidden;
   }
-  
+
+ 
 @keyframes animate {
     0% {
         transform: scale(1)
