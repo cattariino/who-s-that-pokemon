@@ -99,7 +99,7 @@ button{
 
 .container-score{
     color: var(--color-pokemon-yellow);
-    -webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-width: .4px;
     -webkit-text-stroke-color: black; 
     font-size: 50px;
     font-family:var(--font-pixel) ;

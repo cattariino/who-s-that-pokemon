@@ -144,10 +144,27 @@ function loadNewPokemon() {
                         button.addEventListener('animationend', () => {
                             button.style.display = "none";
                         });
-                        removeHeart(); // Llamar a la función para quitar un corazón
+                        removeHeart(); 
                         let score = getStoredScore();
+                        score -= 10;
                         scoreContainer.textContent = score;
                         saveScore(score);
+
+                        
+                        const selectedButtons = containerBotones.querySelectorAll('.btn1:not(.animate__animated)');
+                        if (selectedButtons.length === 1) {
+                            setTimeout(() => {
+                                imgPokemon.style.filter = "none";
+                                signoInterrogacion.textContent = correctName;
+                                const allButtons = containerBotones.querySelectorAll("button");
+                                allButtons.forEach(btn => {
+                                    btn.style.display = "none";
+                                });
+                                setTimeout(() => {
+                                    loadNewPokemon(); 
+                                }, 1000);
+                            }, 500);
+                        }
                     }
                 });
             });
