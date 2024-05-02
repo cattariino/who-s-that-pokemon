@@ -30,8 +30,22 @@ function removeHeart() {
 
         if (heartsLeft === 0) {
             setTimeout(() => {
-                alert("¡Te quedaste sin vidas, inténtalo de nuevo!");
-                restartGame(); // Llamar a la función para reiniciar el juego
+                function showCustomAlert(score) {
+                    const alertMessage = document.querySelector("#alert-message");
+                    alertMessage.textContent = `Your score: ${score}`;
+                
+                    const customAlert = document.getElementById('custom-alert');
+                    customAlert.style.display = 'block';
+                
+                    const btnClose = document.querySelector("#close");
+                    btnClose.addEventListener("click", () => {
+                        customAlert.style.display = 'none';
+                        restartGame()
+                    });
+                }
+                
+                let score = getStoredScore();
+                showCustomAlert(score);
             }, 500);
         }
     }
@@ -42,6 +56,11 @@ function restartGame() {
     heartsLeft = 3;
     containerHears.innerHTML = '';
     addHearts();
+    
+    // Reiniciar el puntaje almacenado a cero
+    saveScore(0);
+    scoreContainer.textContent = 0;
+    
     // Volver a cargar un nuevo Pokémon
     loadNewPokemon();
 }
@@ -107,6 +126,7 @@ function saveScore(score) {
 
 scoreContainer.textContent = getStoredScore();
 
+
 function loadNewPokemon() {
     containerDivImagePokemon.innerHTML = '';
     containerBotones.innerHTML = '';
@@ -160,7 +180,6 @@ function loadNewPokemon() {
                         });
                         removeHeart(); 
                         let score = getStoredScore();
-                        score -= 10;
                         scoreContainer.textContent = score;
                         saveScore(score);
 
@@ -185,5 +204,6 @@ function loadNewPokemon() {
         });
     });
 }
+let score = getStoredScore();
 
 loadNewPokemon();

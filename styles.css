@@ -245,7 +245,6 @@ button{
     }
     .container-container{
         gap: 0;
-        flex-direction: column;
     }
     button{
         font-size: 30px;
