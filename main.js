@@ -49,6 +49,7 @@ function removeHeart() {
                         modalfondo.style.display="none"
                         modalfondo.style.position="none"
                         containerScore.style.opacity = '1';
+                        resetStoredScore();
                         location.reload()
                     });
                 }
@@ -127,6 +128,10 @@ function getRandomPokemonNames(correctName, callback) {
 function getStoredScore() {
     const storedScore = sessionStorage.getItem('score');
     return storedScore ? parseInt(storedScore) : 0;
+}
+
+function resetStoredScore() {
+    localStorage.setItem('score', 0); // Establecer el puntaje almacenado en cero
 }
 
 function saveScore(score) {
