@@ -251,7 +251,7 @@ button{
         padding: 2em;
     }
     .container-container{
-        gap: 0;
+        gap: 0em;
         flex-direction: column;
     }
     .pokeomon{
@@ -308,7 +308,7 @@ button{
         width: 200px;
     }
     .container-container{
-        gap: 0;
+        gap: 4em;
     }
     button{
         font-size: 30px;
@@ -331,7 +331,7 @@ button{
         width: 500px;
     }
     .container-container{
-        gap: 0;
+        gap: 7em;
     }
     button{
         font-size: 30px;

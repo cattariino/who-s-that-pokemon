@@ -68,7 +68,7 @@ function restartGame() {
     addHearts();
     
     // Reiniciar el puntaje almacenado a cero
-    saveScore(0);
+    resetStoredScore();
     scoreContainer.textContent = 0;
     
     // Volver a cargar un nuevo Pokémon
@@ -99,12 +99,12 @@ function shuffleArray(array) {
 }
 
 function getRandomPokemonNames(correctName, callback) {
-    const numberOfPokemons = 3; // Three Pokémon names
+    const numberOfPokemons = 3; // Tres nombres de Pokémon
     const randomPokemonIDs = [];
 
     while (randomPokemonIDs.length < numberOfPokemons - 1) {
         const randomIdPokemon = Math.floor(Math.random() * 150) + 1;
-        if (!randomPokemonIDs.includes(randomIdPokemon)) {
+        if (!randomPokemonIDs.includes(randomIdPokemon) && randomIdPokemon !== correctName) {
             randomPokemonIDs.push(randomIdPokemon);
         }
     }
@@ -131,7 +131,7 @@ function getStoredScore() {
 }
 
 function resetStoredScore() {
-    localStorage.setItem('score', 0); // Establecer el puntaje almacenado en cero
+    sessionStorage.setItem('score', 0); // Establecer el puntaje almacenado en cero
 }
 
 function saveScore(score) {
@@ -218,6 +218,6 @@ function loadNewPokemon() {
         });
     });
 }
-let score = getStoredScore();
 
+let score = getStoredScore();
 loadNewPokemon();
