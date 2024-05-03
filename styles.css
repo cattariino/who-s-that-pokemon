@@ -303,6 +303,9 @@ button{
 }
 
 @media (min-width:601px) and (max-width:800px){
+    body{
+        gap: 7em;
+    }
     .imgPokemon{
         margin: 0 auto;
         width: 200px;
@@ -327,11 +330,14 @@ button{
 }
 
 @media (min-width:801px) and (max-width:1725px){
+    body{
+        gap: 0em;
+    }
     .imgPokemon{
         width: 500px;
     }
     .container-container{
-        gap: 7em;
+        gap: 5em;
     }
     button{
         font-size: 30px;
