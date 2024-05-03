@@ -4,6 +4,7 @@ const containerDivImagePokemon = document.querySelector(".container");
 const containerBotones = document.querySelector(".botones");
 const scoreContainer = document.querySelector(".score");
 const containerHears = document.querySelector(".container-hears");
+const containerScore = document.querySelector(".container-score");
 
 window.addEventListener('beforeunload', function(event) {
     sessionStorage.removeItem('score');
@@ -33,6 +34,11 @@ function removeHeart() {
                 function showCustomAlert(score) {
                     const alertMessage = document.querySelector("#alert-message");
                     alertMessage.textContent = `Your score: ${score}`;
+                    containerScore.style.opacity = '0';
+                    const modalfondo = document.querySelector(".modal-container");
+                    modalfondo.style.display="block"
+                    modalfondo.style.position="fixed"
+
                 
                     const customAlert = document.getElementById('custom-alert');
                     customAlert.style.display = 'block';
@@ -40,7 +46,10 @@ function removeHeart() {
                     const btnClose = document.querySelector("#close");
                     btnClose.addEventListener("click", () => {
                         customAlert.style.display = 'none';
-                        restartGame()
+                        modalfondo.style.display="none"
+                        modalfondo.style.position="none"
+                        containerScore.style.opacity = '1';
+                        location.reload()
                     });
                 }
                 
